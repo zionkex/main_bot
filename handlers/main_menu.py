@@ -1,11 +1,19 @@
 from aiogram import Router,F
 from aiogram.types import Message
+from aiogram.fsm.context import FSMContext
 from database.orm_queries import get_work_bot
+from handlers.commands import show_profile
 from keyboards.inline import inline_keyboard
 from keyboards.reply import main_menu
 from utils.menu_enum import MainMenuEnum
 from sqlalchemy.ext.asyncio import AsyncSession
 main_menu_router = Router()
+
+
+@main_menu_router.message(F.text==MainMenuEnum.PROFILE.value)
+async def profile_menu(message: Message, state: FSMContext, session: AsyncSession) -> None:
+    await show_profile(event=message, state=state, session=session)
+
 
 @main_menu_router.message(F.text==MainMenuEnum.ABOUT_PROJECT.value)
 async def about_project(message: Message) -> None:
@@ -42,7 +50,7 @@ async def information(message: Message) -> None:
         "┖ Feedback (https://t.me/FeedbackTMBot)"
     )
 
-@main_menu_router.message(F.text==MainMenuEnum.NFT.value)
+@main_menu_router.message(F.text==MainMenuEnum.SHOP.value)
 async def nft(message: Message,session:AsyncSession) -> None:
     bots= await get_work_bot(session=session,type = 'rest')
     await message.answer("🖥 Активные боты для работы:",

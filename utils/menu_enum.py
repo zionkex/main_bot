@@ -5,7 +5,7 @@ class MainMenuEnum(Enum):
     PROFILE = "💼 Профиль"
     INFORMATION = "ℹ️ Информация"
     TRADE = "📊TRADE"
-    NFT = "💠NFT"
+    SHOP = "💊SHOP"
     ESCORT = "💝    ESCORT"
     ABOUT_PROJECT = "ℹ️О проекте"
 

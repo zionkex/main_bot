@@ -10,9 +10,9 @@ import sys
 from database.engine import db
 from middlewars.db import DataBaseSession
 from handlers import main_router
+from config import settings
 
-
-TOKEN = "7633959907:AAG0BFg06L_7hLpQoYMxpdd_pq6T-0ifclU"
+TOKEN = settings.TOKEN
 
 dp = Dispatcher()
 dp.update.middleware (DataBaseSession(session_pool=db.sessionmaker))
@@ -23,7 +23,7 @@ async def main():
     bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
     
     await dp.start_polling(bot)
-
+    
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     asyncio.run(main())

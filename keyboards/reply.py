@@ -11,7 +11,7 @@ def main_menu() -> ReplyKeyboardBuilder:
         KeyboardButton(text=MainMenuEnum.PROFILE.value),
         KeyboardButton(text=MainMenuEnum.INFORMATION.value),
         KeyboardButton(text=MainMenuEnum.TRADE.value),
-        KeyboardButton(text=MainMenuEnum.NFT.value),
+        KeyboardButton(text=MainMenuEnum.SHOP.value),
         KeyboardButton(text=MainMenuEnum.ESCORT.value),
         KeyboardButton(text=MainMenuEnum.ABOUT_PROJECT.value),
     )
